@@ -6,13 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body onload="onInit()">
 
-    <section class="gallery"></section>
+    <header>
+        <nav></nav>
+    </header>
 
-    <section class="editor"></section>
+    <main class="main-container">
+
+        <section class="gallery">
+            <!-- <img id="1" src="meme-imgs(square)/1.jpg" alt="image" onclick="renderMeme(this.id, this.src)" />
+            <img id="2" src="meme-imgs(square)/2.jpg" alt="image" onclick="renderMeme(this.id, this.src)" /> -->
+        </section>
+
+        <section class="editor">
+            <canvas id="canvas" width="400" height="400" style="border: 1px solid black;"></canvas>
+            <input type="text" id="text" placeholder="Text Line" oninput="onSetLineTxt(this.value)" />
+        </section>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/gallery.controller.js"></script>
 
 </body>
 
