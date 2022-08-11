@@ -25,6 +25,9 @@
         <section class="editor">
             <canvas id="canvas" width="400" height="400" style="border: 1px solid black;"></canvas>
             <input type="text" id="text" placeholder="Text Line" oninput="onSetLineTxt(this.value)" />
+            <input type="color" id="color" value="#ffffff" oninput="onSetLineColor(this.value)" />
+            <button id="decrease" onclick="onChangeLineSize(-2)">-</button>
+            <button id="increase" onclick="onChangeLineSize(2)">+</button>
         </section>
 
     </main>

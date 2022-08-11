@@ -12,7 +12,7 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'Text Line',
+            txt: '',
             size: 50,
             align: 'center',
             color: 'white'
@@ -29,8 +29,16 @@ function getMeme() {
     return gMeme
 }
 
+function getSelectedLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
 function getImgUrlById(id) {
     return gImgs.find(img => id === img.id).url
+}
+
+function setImg(id) {
+    gMeme.selectedImgId = id
 }
 
 function setLineTxt(txt) {
@@ -38,7 +46,11 @@ function setLineTxt(txt) {
     console.log(gMeme.lines[0].txt);
 }
 
-function setImg(id) {
-    
+function setLineColor(color) {
+    gMeme.lines[0].color = color
+}
+
+function setLineSize(size) {
+    gMeme.lines[gMeme.selectedLineIdx].size = size
 }
 

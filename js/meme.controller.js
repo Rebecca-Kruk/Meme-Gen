@@ -9,28 +9,24 @@ function renderCanvas() {
 }
 
 // Render a meme on the canvas
-function renderMeme(id) {
+function renderMeme() {
     const meme = getMeme()
-    meme.selectedImgId = id
     const lines = meme.lines[0]
 
     const img = new Image()
-    img.src = getImgUrlById(id)
+    img.src = getImgUrlById(meme.selectedImgId)
 
     img.onload = () => {
-        renderImg(img)
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         renderLineTxt(lines.txt, lines.size, lines.align, lines.color)
     }
-}
-
-function renderImg(img) {
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
 function renderLineTxt(txt, size, align, color) {
     const width = gElCanvas.width / 2
     const height = gElCanvas.height / 10
 
+    txt = (txt === '') ? 'Text Line' : txt
     gCtx.beginPath()
     gCtx.textBaseline = 'middle'
     gCtx.textAlign = align
@@ -43,12 +39,27 @@ function renderLineTxt(txt, size, align, color) {
     gCtx.closePath()
 }
 
-function onSetLineTxt(txt) {
-    setLineTxt(txt)
-    renderMeme(getMeme().selectedImgId)
+function onImgSelect(id) {
+    onSetLineTxt('')
+    onSetLineColor('#ffffff')
+    setLineSize(50)
+    setImg(id)
+    renderMeme()
 }
 
-function onImgSelect(id) {
-    setImg(id)
-    renderMeme(getMeme().selectedImgId)
+function onSetLineTxt(txt) {
+    document.getElementById('text').value = txt
+    setLineTxt(txt)
+    renderMeme()
+}
+
+function onSetLineColor(color) {
+    document.getElementById('color').value = color
+    setLineColor(color)
+    renderMeme()
+}
+
+function onChangeLineSize(num) {
+    setLineSize(getSelectedLine().size + num)
+    renderMeme()
 }
