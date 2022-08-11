@@ -17,24 +17,39 @@
 
     <main class="main-container">
 
-        <section class="gallery">
-            <!-- <img id="1" src="meme-imgs(square)/1.jpg" alt="image" onclick="renderMeme(this.id, this.src)" />
-            <img id="2" src="meme-imgs(square)/2.jpg" alt="image" onclick="renderMeme(this.id, this.src)" /> -->
-        </section>
+        <section class="gallery"></section>
 
         <section class="editor">
-            <canvas id="canvas" width="400" height="400" style="border: 1px solid black;"></canvas>
-            <input type="text" id="text" placeholder="Text Line" oninput="onSetLineTxt(this.value)" />
-            <input type="color" id="color" value="#ffffff" oninput="onSetLineColor(this.value)" />
-            <button id="decrease" onclick="onChangeLineSize(-2)">-</button>
-            <button id="increase" onclick="onChangeLineSize(2)">+</button>
+
+            <div class="canvas-container">
+                <canvas id="canvas" width="400" height="400" style="border: 1px solid black;"></canvas>
+            </div>
+
+            <section class="control-box">
+                <input type="text" id="text" placeholder="Text Line" oninput="onSetLineTxt(this.value)" />
+                <br>
+                <button id="line-down" onclick="onMoveLine(-2)">move line down</button>
+                <button id="line-up" onclick="onMoveLine(2)">move line up</button>
+                <button id="switch-line" onclick="onSwitchLine()">switch line</button>
+                <button id="add-line" onclick="onAddLine()">+</button>
+                <button id="delete-line" onclick="onDeleteLine()">delete</button>
+                <br>
+                <button id="decrease" onclick="onChangeLineSize(-2)">A-</button>
+                <button id="increase" onclick="onChangeLineSize(2)">A+</button>
+                <!-- <button id="align-left" onclick="onSetLineAlign()">left</button>
+                <button id="align-center" onclick="onSetLineAlign()">center</button>
+                <button id="align-right" onclick="onSetLineAlign()">right</button> -->
+                <br>
+                <input type="color" id="color" value="#ffffff" oninput="onSetLineColor(this.value)" />
+            </section>
+
         </section>
 
     </main>
 
     <footer></footer>
 
-    <script src="js/services/meme.service.js"></script>
+    <script src="js/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/gallery.controller.js"></script>
 

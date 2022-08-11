@@ -2,7 +2,7 @@
 
 function onInit() {
     renderGallery()
-    renderCanvas()
+    renderEditor()
 }
 
 function renderGallery() {
