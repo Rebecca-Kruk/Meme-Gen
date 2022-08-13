@@ -1,0 +1,50 @@
+::selection {
+    background-color: orange;
+    color: white;
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: dyna-puff, serif;
+    color: #1e1e1e;
+    line-height: 1.25;
+    /* font-size: 10px; */
+}
+
+body {
+    margin: 0;
+    font-size: 1rem;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 1.75em;
+    letter-spacing: 0.03em;
+}
+
+p {
+    font-size: 1em;
+    letter-spacing: 0.03em;
+}
+
+/* LOGO */
+
+.logo img {
+    width: 15.625em;
+    /* width: 250px; */
+    padding: 1.25em;
+    /* padding: 20px; */
+}

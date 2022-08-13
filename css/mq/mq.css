@@ -1,0 +1,74 @@
+/* FOR MOBILE ONLY */
+
+@media (max-width:900px) {
+    .editor {
+        flex-direction: column;
+    }
+
+    .canvas-container {
+        margin-bottom: 30px;
+    }
+}
+
+/* SMALL */
+
+@media (min-width: 700px) {
+    .main-layout>*:not(.full) {
+        max-width: var(--small);
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+    }
+}
+
+/* MEDIUM */
+
+@media (min-width: 1040px) {
+    .main-layout>*:not(.full) {
+        max-width: var(--medium);
+    }
+}
+
+/* LARGE */
+
+@media (min-width: 1440px) {
+    .main-layout>*:not(.full) {
+        max-width: var(--large);
+    }
+}
+
+/* MQ for Hamburger Menu*/
+
+@media (max-width: 700px) {
+    .main-nav-list {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 300;
+        background: var(--clr2);
+        height: 100vh;
+        transition: transform 1s;
+        transform: translate(100%, 0);
+    }
+
+    .open .main-nav-list {
+        transform: translate(0, 0);
+    }
+
+    .main-nav-list a {
+        height: auto;
+        line-height: 1;
+        padding: 20px 0;
+        width: 60vw;
+        border: none;
+        border-bottom: 1px solid var(--clr1);
+    }
+
+    .toggle-menu-screen {
+        display: block;
+    }
+
+    .toggle-menu-btn {
+        display: block;
+    }
+}

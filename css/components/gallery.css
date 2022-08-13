@@ -1,0 +1,10 @@
+/* FLEX */
+
+.gallery {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gallery img {
+    width: 220px;
+}

@@ -9,37 +9,77 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body onload="onInit()">
+<body class="main-layout" onload="onInit()">
 
-    <header>
-        <nav></nav>
+    <header class="main-header-container full main-layout">
+        <div class="main-header flex space-between align-center">
+            <div class="logo" onclick="openGallery()"><img src="LOGO/LOGO.png" /></div>
+            <nav class="main-nav">
+                <ul class="main-nav-list flex clean-list">
+                    <li onclick="openGallery()"><a href="#">Gallery</a></li>
+                    <li><a href="#">Memes</a></li>
+                    <li><a href="#main-footer">About</a></li>
+                </ul>
+                <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu">❌</button>
+                <div class="toggle-menu-screen screen" onclick="toggleMenu()" alt="toggle main menu"></div>
+            </nav>
+        </div>
     </header>
 
-    <main class="main-container">
+    <div class="search-box">
+        <img src="css/ICONS/search-icon.png" />
+        <input id="search-input" type="text" placeholder="Search for Topics" onkeyup="onKeywordSearch()" />
+        <br>
+        <ul class="search-list clean-list" hidden>
+            <li><a href="#">Politics</a></li>
+            <li><a href="#">Smile</a></li>
+            <li><a href="#">Animal</a></li>
+            <li><a href="#">Cat</a></li>
+            <li><a href="#">Dog</a></li>
+            <li><a href="#">Baby</a></li>
+            <li><a href="#">Movie</a></li>
+            <li><a href="#">Cartoon</a></li>
+            <li><a href="#">Men</a></li>
+        </ul>
+    </div>
 
-        <section class="gallery"></section>
+    <main class="main-container flex justify-center">
 
-        <section class="editor">
+        <section class="gallery flex justify-center"></section>
+
+        <section class="editor justify-center align-center" hidden>
 
             <div class="canvas-container">
                 <canvas id="canvas" width="400" height="400" style="border: 1px solid black;"></canvas>
             </div>
 
-            <section class="control-box">
+            <section class="control-box-container">
                 <input type="text" id="text" placeholder="Text Line" oninput="onSetLineTxt(this.value)" />
                 <br>
-                <button id="line-down" onclick="onMoveLine(-2)">move line down</button>
-                <button id="line-up" onclick="onMoveLine(2)">move line up</button>
-                <button id="switch-line" onclick="onSwitchLine()">switch line</button>
-                <button id="add-line" onclick="onAddLine()">+</button>
-                <button id="delete-line" onclick="onDeleteLine()">delete</button>
+                <button id="line-down" onclick="onMoveLine(-2)">Line Down</button>
+                <button id="line-up" onclick="onMoveLine(2)">Line Up</button>
+                <button id="switch-line" onclick="onSwitchLine()"><img src="css/ICONS/switch.png" /></button>
+                <button id="add-line" onclick="onAddLine()"><img src="css/ICONS/add.png" /></button>
+                <button id="delete-line" onclick="onDeleteLine()"><img src="css/ICONS/trash.png" /></button>
                 <br>
-                <button id="decrease" onclick="onChangeLineSize(-2)">A-</button>
-                <button id="increase" onclick="onChangeLineSize(2)">A+</button>
-                <!-- <button id="align-left" onclick="onSetLineAlign()">left</button>
-                <button id="align-center" onclick="onSetLineAlign()">center</button>
-                <button id="align-right" onclick="onSetLineAlign()">right</button> -->
+                <button id="decrease" onclick="onChangeLineSize(-2)"><img src="css/ICONS/decrease-font.png" /></button>
+                <button id="increase" onclick="onChangeLineSize(2)"><img src="css/ICONS/increase-font.png" /></button>
+                <button id="align-left" onclick="onSetLineAlign('right')">
+                    <img src="css/ICONS/align-to-left.png" />
+                </button>
+                <button id="align-center" onclick="onSetLineAlign('center')"><img
+                        src="css/ICONS/center-text-alignment.png" />
+                </button>
+                <button id="align-right" onclick="onSetLineAlign('left')">
+                    <img src="css/ICONS/align-to-right.png" />
+                </button>
                 <br>
+                <select id="font-family" onchange="onSetLineFont(this.value)">
+                    <option value="impact">Impact</option>
+                    <option value="cursive">Cursive</option>
+                    <option value="serif">Sans-Serif</option>
+                </select>
+                <input type="color" id="stroke-color" value="#000000" oninput="onSetLineStrokeColor(this.value)" />
                 <input type="color" id="color" value="#ffffff" oninput="onSetLineColor(this.value)" />
             </section>
 
@@ -47,7 +87,24 @@
 
     </main>
 
-    <footer></footer>
+    <footer id="main-footer" class="main-footer full flex column space-between align-center">
+
+        <div class="logo"><img src="LOGO/LOGO.png" /></div>
+        <small class="rights">
+            © 2022 MemeGen.com - All Rights Reserved
+        </small>
+        <ul class="social-links-container flex clean-list">
+            <li><a href="https://www.facebook.com" class="fa facebook" target="_blank" aria-label="facebook icon"></a>
+            </li>
+            <li><a href="https://www.twitter.com" class="fa twitter" target="_blank" aria-label="twitter icon"></a>
+            </li>
+            <li><a href="https://www.behance.net" class="fa behance" target="_blank" aria-label="behance icon"></a>
+            </li>
+            <li><a href="https://dribbble.com" class="fa dribbble" target="_blank" aria-label="dribbble icon"></a>
+            </li>
+        </ul>
+
+    </footer>
 
     <script src="js/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>

@@ -1,0 +1,32 @@
+.editor {
+    text-align: center;
+}
+
+.editor .canvas-container {
+    margin-right: 20px;
+}
+
+.editor .control-box-container img {
+    width: 20px;
+}
+
+.editor .control-box-container input:not([type=color]),
+.editor .control-box-container button,
+.editor .control-box-container select {
+    font-family: dyna-puff, serif;
+    font-weight: 100;
+    font-size: 15px;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid var(--clr2);
+    border-radius: 4px;
+    box-shadow: -1px 8px 14px -11px rgba(0, 0, 0, 1);
+    color: var(--clr2);
+    background-color: white;
+}
+
+.editor .control-box-container input[type=text] {
+    margin-bottom: 50px;
+    padding: 15px;
+    font-size: 20px;
+}
