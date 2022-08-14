@@ -10,41 +10,51 @@
 /* social networks */
 
 @font-face {
-    font-family: fa;
+    font-family: fa-brands;
     src: url(../fonts/font_awesome/fa-brands-400.ttf);
 }
 
-.fa {
-    font-family: fa;
+.fa-brands {
+    font-family: fa-brands;
 }
 
-.fa.facebook::before {
+.fa-brands.facebook::before {
     content: '\f39e';
 }
 
-.fa.twitter::before {
+.fa-brands.twitter::before {
     content: '\f099';
 }
 
-.fa.behance::before {
+.fa-brands.behance::before {
     content: '\f1b4';
 }
 
-.fa.dribbble:before {
+.fa-brands.dribbble::before {
     content: '\f17d';
 }
 
-.fa.paint-brush::before {
+@font-face {
+    font-family: fa-solid;
+    src: url(../fonts/font_awesome/fa-solid-900.ttf);
+}
+
+.fa-solid {
+    font-family: fa-solid;
+}
+
+.fa-solid.paint-brush::before {
     content: '\f1fc';
 }
 
-.fa.fill-drip::before {
+.fa-solid.fill-drip::before {
     content: '\f576';
 }
 
-/* paint button */
+.fa-solid.arrow-down::before {
+    content: '\f175';
+}
 
-@font-face {
-    font-family: ;
-    src: url();
+.fa-solid.arrow-up::before {
+    content: '\f176';
 }

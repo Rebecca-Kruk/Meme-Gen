@@ -23,6 +23,11 @@ function renderMeme() {
     const img = new Image()
     img.src = getImgUrlById(meme.selectedImgId)
 
+    // console.log('-----------------');
+    // console.log('meme:', meme);
+    // console.log('lines:', lines);
+    // console.log('img.src:', img.src);
+
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
@@ -75,8 +80,13 @@ function onImgSelect(id) {
     document.querySelector('.gallery').classList.remove('flex')
     document.querySelector('.gallery').hidden = true
     document.querySelector('.editor').classList.add('flex')
+    document.querySelector('.search-box').hidden = true
     setImg(id)
-    getMeme().lines = []
+    resetMemeLine()
+    onSetLineTxt(getSelectedLine().txt)
+    onSetLineColor(getSelectedLine().color)
+    onSetLineStrokeColor(getSelectedLine().strokeColor)
+    onSetLineFont(getSelectedLine().font)
     renderMeme()
 }
 
@@ -88,6 +98,13 @@ function onSetLineTxt(txt) {
 
 function onSetLineColor(color) {
     document.getElementById('color').value = color
+    document.querySelector('.fill-drip').style.color = color
+    if (color === '#ffffff') {
+        document.querySelector('.fill-drip').style.backgroundColor = '#000000'
+    }
+    else if (color === '#000000') {
+        document.querySelector('.fill-drip').style.backgroundColor = '#ffffff'
+    }
     setLineColor(color)
     renderMeme()
 }
@@ -136,10 +153,24 @@ function onSetLineFont(font) {
 
 function onSetLineStrokeColor(strokeColor) {
     document.getElementById('stroke-color').value = strokeColor
+    document.querySelector('.paint-brush').style.color = strokeColor
+    if (strokeColor === '#ffffff') {
+        document.querySelector('.paint-brush').style.backgroundColor = '#000000'
+    }
+    else if (strokeColor === '#000000') {
+        document.querySelector('.paint-brush').style.backgroundColor = '#ffffff'
+    }
     setLineStrokeColor(strokeColor)
     renderMeme()
 }
 
-function onOpenPallete(id) {
-    document.getElementById(id).click()
+function onSaveMeme() {
+    saveMeme()
+    // gCtx.save()
+}
+
+function onDownloadMeme(elLink) {
+    const data = gElCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'my-image.jpg'
 }

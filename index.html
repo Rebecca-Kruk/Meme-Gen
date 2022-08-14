@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="LOGO/LOGO.png">
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
     <title>Meme Generator</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -14,11 +14,11 @@
 
     <header class="main-header-container full main-layout">
         <div class="main-header flex space-between align-center">
-            <div class="logo" onclick="openGallery()"><img src="LOGO/LOGO.png" /></div>
+            <div class="logo" onclick="onDisplayGallery()"><img src="LOGO/LOGO.png" /></div>
             <nav class="main-nav">
                 <ul class="main-nav-list flex clean-list">
-                    <li onclick="openGallery()"><a href="#">Gallery</a></li>
-                    <li><a href="#">Memes</a></li>
+                    <li onclick="onDisplayGallery()"><a href="#">Gallery</a></li>
+                    <li onclick="onDisplaySavedMemes()"><a href="#">Memes</a></li>
                     <li><a href="#main-footer">About</a></li>
                 </ul>
                 <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu">❌</button>
@@ -32,15 +32,15 @@
         <input id="search-input" type="text" placeholder="Search for Topics" onkeyup="onKeywordSearch()" />
         <br>
         <ul class="search-list clean-list" hidden>
-            <li><a href="#">Politics</a></li>
-            <li><a href="#">Smile</a></li>
-            <li><a href="#">Animal</a></li>
-            <li><a href="#">Cat</a></li>
-            <li><a href="#">Dog</a></li>
-            <li><a href="#">Baby</a></li>
-            <li><a href="#">Movie</a></li>
-            <li><a href="#">Cartoon</a></li>
-            <li><a href="#">Men</a></li>
+            <li onclick="onSelectKeyword('politics')"><a href="#">Politics</a></li>
+            <li onclick="onSelectKeyword('smile')"><a href="#">Smile</a></li>
+            <li onclick="onSelectKeyword('animal')"><a href="#">Animal</a></li>
+            <li onclick="onSelectKeyword('cat')"><a href="#">Cat</a></li>
+            <li onclick="onSelectKeyword('dog')"><a href="#">Dog</a></li>
+            <li onclick="onSelectKeyword('baby')"><a href="#">Baby</a></li>
+            <li onclick="onSelectKeyword('movie')"><a href="#">Movie</a></li>
+            <li onclick="onSelectKeyword('cartoon')"><a href="#">Cartoon</a></li>
+            <li onclick="onSelectKeyword('men')"><a href="#">Men</a></li>
         </ul>
     </div>
 
@@ -48,7 +48,7 @@
 
         <section class="gallery flex justify-center"></section>
 
-        <section class="editor justify-center align-center" hidden>
+        <section class="editor align-center" hidden>
 
             <div class="canvas-container">
                 <canvas id="canvas" width="400" height="400" style="border: 1px solid black;"></canvas>
@@ -58,8 +58,8 @@
 
                 <input type="text" id="text" placeholder="Text Line" oninput="onSetLineTxt(this.value)" />
                 <br>
-                <button id="line-down" onclick="onMoveLine(-2)">Line Down</button>
-                <button id="line-up" onclick="onMoveLine(2)">Line Up</button>
+                <button id="line-down" class="fa-solid arrow-down" onclick="onMoveLine(-2)"></button>
+                <button id="line-up" class="fa-solid arrow-up" onclick="onMoveLine(2)"></button>
                 <button id="switch-line" onclick="onSwitchLine()"><img src="css/ICONS/switch.png" /></button>
                 <button id="add-line" onclick="onAddLine()"><img src="css/ICONS/add.png" /></button>
                 <button id="delete-line" onclick="onDeleteLine()"><img src="css/ICONS/trash.png" /></button>
@@ -81,16 +81,29 @@
                     <option value="cursive">Cursive</option>
                     <option value="serif">Sans-Serif</option>
                 </select>
-                <input type="color" id="stroke-color" value="#000000" oninput="onSetLineStrokeColor(this.value)" />
-                <button class="fa paint-brush" onclick="onOpenPallete('stroke-color')">paint-brush</button>
-                <input type="color" id="color" value="#ffffff" oninput="onSetLineColor(this.value)" />
-                <button class="fa fill-drip" onclick="onOpenPallete('color')">fill-drip</button>
+                <label class="fa-solid paint-brush">
+                    <input type="color" id="stroke-color" value="#000000" oninput="onSetLineStrokeColor(this.value)" />
+                </label>
+                <label class="fa-solid fill-drip">
+                    <input type="color" id="color" value="#ffffff" oninput="onSetLineColor(this.value)" />
+                </label>
+                <br>
+                <button class="save" onclick="onSaveMeme()">Save</button>
+                <button><a href="#" class="download" onclick="onDownloadMeme(this)" download="">Download</a></button>
 
             </section>
 
         </section>
 
+        <section class="saved-memes" hidden>
+            <canvas id="saved-canvas" width="400" height="400" style="border: 1px solid black;"></canvas>
+            <canvas id="saved-canvas2" width="400" height="400" style="border: 1px solid black;"></canvas>
+            <canvas id="saved-canvas3" width="400" height="400" style="border: 1px solid black;"></canvas>
+            <canvas id="saved-canvas4" width="400" height="400" style="border: 1px solid black;"></canvas>
+        </section>
+
     </main>
+
 
     <footer id="main-footer" class="main-footer full flex column space-between align-center">
 
@@ -99,18 +112,24 @@
             © 2022 MemeGen.com - All Rights Reserved
         </small>
         <ul class="social-links-container flex clean-list">
-            <li><a href="https://www.facebook.com" class="fa facebook" target="_blank" aria-label="facebook icon"></a>
+            <li><a href="https://www.facebook.com" class="fa-brands facebook" target="_blank"
+                    aria-label="facebook icon"></a>
             </li>
-            <li><a href="https://www.twitter.com" class="fa twitter" target="_blank" aria-label="twitter icon"></a>
+
+            <li><a href="https://www.twitter.com" class="fa-brands twitter" target="_blank"
+                    aria-label="twitter icon"></a>
             </li>
-            <li><a href="https://www.behance.net" class="fa behance" target="_blank" aria-label="behance icon"></a>
+            <li><a href="https://www.behance.net" class="fa-brands behance" target="_blank"
+                    aria-label="behance icon"></a>
             </li>
-            <li><a href="https://dribbble.com" class="fa dribbble" target="_blank" aria-label="dribbble icon"></a>
+            <li><a href="https://dribbble.com" class="fa-brands dribbble" target="_blank"
+                    aria-label="dribbble icon"></a>
             </li>
         </ul>
 
     </footer>
 
+    <script src="js/storage.service.js"></script>
     <script src="js/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/gallery.controller.js"></script>

@@ -1,5 +1,6 @@
 'use strict'
 
+const STORAGE_KEY = 'memesDB'
 var gKeywordSearchCountMap = { 'politics': 3, 'smile': 5, 'animal': 3, 'cat': 1, 'dog': 2, 'baby': 4, 'movie': 6, 'cartoon': 1, 'men': 11 }
 
 var gImgs = [
@@ -26,19 +27,9 @@ var gImgs = [
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: [
-        {
-            // pos: { x: 200, y: 40 },
-            // txt: '',
-            // size: 50,
-            // align: 'center',
-            // font: 'impact',
-            // color: '#ffffff',
-            // strokeColor: '#000000',
-            // isDrag: false
-        }
-    ]
+    lines: []
 }
+var gMemes
 
 function getImgsForDisplay() {
     return gImgs
@@ -58,6 +49,22 @@ function getImgUrlById(id) {
 
 function setImg(id) {
     gMeme.selectedImgId = id
+}
+
+function resetMemeLine() {
+    gMeme.selectedLineIdx = 0
+    gMeme.lines = [
+        {
+            pos: { x: 200, y: 40 },
+            txt: '',
+            size: 50,
+            align: 'center',
+            font: 'impact',
+            color: '#ffffff',
+            strokeColor: '#000000',
+            isDrag: false
+        }
+    ]
 }
 
 function setLineTxt(txt) {
@@ -119,4 +126,24 @@ function setLineFont(font) {
 
 function setLineStrokeColor(strokeColor) {
     getSelectedLine().strokeColor = strokeColor
+}
+
+function loadMemesFromStorage() {
+    gMemes = loadFromStorage(STORAGE_KEY)
+
+    if (!gMemes || !gMemes.length) gMemes = []
+
+    // ???
+    // gMemes = (!gMemes || !gMemes.length) ? [] : loadFromStorage(STORAGE_KEY)
+
+    saveMemesToStorage()
+}
+
+function saveMeme() {
+    gMemes.push(gMeme)
+    saveMemesToStorage()
+}
+
+function saveMemesToStorage() {
+    saveToStorage(STORAGE_KEY, gMemes)
 }

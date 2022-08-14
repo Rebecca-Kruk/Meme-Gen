@@ -6,6 +6,7 @@ var gKeywordSearch = []
 function onInit() {
     renderGallery()
     renderEditor()
+    loadMemesFromStorage()
 }
 
 function renderGallery() {
@@ -56,12 +57,74 @@ function onKeywordSearch() {
     renderGallery()
 }
 
-function openGallery() {
+function onSelectKeyword(keyword) {
+    selectKeyword(keyword)
+    document.getElementById('search-input').value = keyword
+    document.querySelector('.search-list').hidden = true
+    renderGallery()
+}
+
+// move to Gallery Service
+function selectKeyword(keyword) {
+    gKeywordSearch = [keyword]
+}
+
+function onDisplayGallery() {
     document.querySelector('.gallery').classList.add('flex')
     document.querySelector('.editor').classList.remove('flex')
     document.querySelector('.editor').hidden = true
+    document.querySelector('.saved-memes').classList.remove('flex')
+    document.querySelector('.saved-memes').hidden = true
+    document.querySelector('.search-box').hidden = false
 }
 
 function toggleMenu() {
     document.querySelector('.main-nav').classList.toggle('open')
 }
+
+// saved memes controller
+function onDisplaySavedMemes() {
+    document.querySelector('.gallery').classList.remove('flex')
+    document.querySelector('.gallery').hidden = true
+    document.querySelector('.editor').classList.remove('flex')
+    document.querySelector('.editor').hidden = true
+    document.querySelector('.search-box').hidden = true
+    document.querySelector('.saved-memes').classList.add('flex')
+    // renderSavedMemes()
+}
+
+function renderSavedMemes() {
+    gMeme = gMemes[1]
+    // gCtx.restore()
+
+    // gElCanvas = document.querySelector('#saved-canvas')
+    // WIP :
+    // var sourceCanvas = gElCanvas
+    // var destinationCanvas = document.getElementById('saved-canvas')
+    // var destCtx = destinationCanvas.getContext('2d')
+    // destCtx.drawImage(sourceCanvas, 0, 0)
+
+    // gMeme = gMemes[1]
+    // var sourceCanvas = gElCanvas
+    // var destinationCanvas = document.getElementById('saved-canvas2')
+    // var destCtx = destinationCanvas.getContext('2d')
+    // destCtx.drawImage(sourceCanvas, 0, 0)
+
+    // gMeme = gMemes[2]
+    // var sourceCanvas = gElCanvas
+    // var destinationCanvas = document.getElementById('saved-canvas3')
+    // var destCtx = destinationCanvas.getContext('2d')
+    // destCtx.drawImage(sourceCanvas, 0, 0)
+
+    // gMeme = gMemes[3]
+    // var sourceCanvas = gElCanvas
+    // var destinationCanvas = document.getElementById('saved-canvas4')
+    // var destCtx = destinationCanvas.getContext('2d')
+    // destCtx.drawImage(sourceCanvas, 0, 0)
+
+    renderMeme()
+}
+
+
+
+

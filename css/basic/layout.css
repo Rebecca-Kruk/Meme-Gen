@@ -5,5 +5,7 @@
 }
 
 .main-container {
+    /* footer at the bottom */
+    /* min-height: 300px; */
     margin-bottom: 30px;
 }

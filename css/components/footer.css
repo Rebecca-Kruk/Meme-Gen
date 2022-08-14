@@ -35,18 +35,18 @@
     color: #ffffff;
 }
 
-.fa.facebook:hover {
+.fa-brands.facebook:hover {
     background-color: #4267B2;
 }
 
-.fa.twitter:hover {
+.fa-brands.twitter:hover {
     background-color: #1DA1F2;
 }
 
-.fa.behance:hover {
+.fa-brands.behance:hover {
     background-color: #053eff;
 }
 
-.fa.dribbble:hover {
+.fa-brands.dribbble:hover {
     background-color: #ea4c89;
 }
