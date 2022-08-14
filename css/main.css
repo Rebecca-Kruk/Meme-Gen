@@ -5,7 +5,7 @@
 @import "basic/helpers.css";
 @import "basic/layout.css";
 
-@import "components/header.css";
+@import "components/navbar.css";
 @import "components/search-box.css";
 @import "components/gallery.css";
 @import "components/meme-editor.css";

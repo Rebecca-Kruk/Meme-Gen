@@ -139,3 +139,7 @@ function onSetLineStrokeColor(strokeColor) {
     setLineStrokeColor(strokeColor)
     renderMeme()
 }
+
+function onOpenPallete(id) {
+    document.getElementById(id).click()
+}

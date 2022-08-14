@@ -10,7 +10,7 @@
     width: 20px;
 }
 
-.editor .control-box-container input:not([type=color]),
+/* .editor .control-box-container input:not([type=color]), */
 .editor .control-box-container button,
 .editor .control-box-container select {
     font-family: dyna-puff, serif;
@@ -29,4 +29,8 @@
     margin-bottom: 50px;
     padding: 15px;
     font-size: 20px;
+}
+
+.editor .control-box-container input[type=color] {
+    display: none;
 }

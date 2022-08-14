@@ -41,12 +41,12 @@ function onKeywordSearch() {
             li[i].style.display = 'none'
         }
 
-        // move to Gallery Service
         if (txtValue.toUpperCase().includes(filter)) {
             if (filter === '') {
                 document.querySelector('.search-list').hidden = true
             }
 
+            // move to Gallery Service
             values.push(txtValue.toLowerCase())
         }
     }
