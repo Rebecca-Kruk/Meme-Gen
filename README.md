@@ -1,2 +1,2 @@
 # Meme-Generator Sprint2
-Meme-Generator app, second project part of Full-Stack bootcamp at Coding Academy.
+Meme-Generator app, second project of the Coding Academy bootcamp.
